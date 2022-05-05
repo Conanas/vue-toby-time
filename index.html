@@ -32,12 +32,14 @@
       </button>
     </div>
     <div v-if="page === 'timer'">
-      Timer Mode
+      <button @click="startWorkout()">Start</button>
       <button @click="page = 'create'">
         Cancel
       </button>
     </div>
   </div>
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-timer/lib/moment-timer.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="/index.js"></script>
 </body>

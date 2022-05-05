@@ -3,13 +3,13 @@ window.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       page: 'create',
-      reps: 0,
+      reps: 1,
       restTime: 0,
-      sets: 0,
+      sets: 1,
       breakTime: 0
     },
     methods: {
-
+      
     },
     computed: {
 
