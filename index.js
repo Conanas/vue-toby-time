@@ -12,6 +12,9 @@ window.addEventListener('DOMContentLoaded', () => {
     methods: {
       changePage(pageName) {
         this.pageName = pageName;
+        if (pageName === 'countdownPage') {
+          this.countdown = this.restTime;
+        }
       },
       startWorkout() {
         this.countdown = this.restTime;
