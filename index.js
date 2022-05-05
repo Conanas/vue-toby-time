@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
       breakTime: 1,
       countdown: 0,
       timer: null,
+      timerMode: 'GO'
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
@@ -24,23 +25,29 @@ window.addEventListener('DOMContentLoaded', () => {
         this.countdown--;
         if (!this.countdown) {
           this.timer.stop();
+          this.timerMode = 'GO';
+          this.countdown = this.restTime;
         }
       },
-      startWorkout() {
+      startTimer() {
+        this.timerMode = 'REST';
         this.timer.start();
-      },
-      pauseWorkout() {
-        this.timer.stop();
-      },
-      stopWorkout() {
-        this.timer.stop();
-      },
-      resetWorkout() {
-        this.countdown = this.restTime;
-      },
+      }
     },
     computed: {
+      timerMessage() {
+        if (this.timerMode === 'GO') {
+          return 'Go!';
+        }
 
+        if (this.timerMode === 'REST') {
+          return 'Rest';
+        }
+
+        if (this.timerMode === 'BREAK') {
+          return 'Break';
+        }
+      }
     }
   });
 });

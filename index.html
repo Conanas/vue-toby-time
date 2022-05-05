@@ -30,14 +30,10 @@
       <button @click="changePage('countdownPage')">Go</button>
     </div>
     <div v-if="pageName === 'countdownPage'">
+      <div>{{timerMessage}}</div>
       <div>{{countdown}}</div>
-      <button @click="startWorkout()">Start</button>
-      <button @click="pauseWorkout()">Pause</button>
-      <button @click="stopWorkout()">Stop</button>
-      <button @click="resetWorkout()">Reset</button>
-      <button @click="changePage('createPage')">
-        Cancel
-      </button>
+      <button @click="startTimer()">Start</button>
+      <button @click="changePage('createPage')">Cancel</button>
     </div>
   </div>
   <script src="https://momentjs.com/downloads/moment.js"></script>
