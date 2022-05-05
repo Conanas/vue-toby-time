@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="app">
-    <div v-if="page === 'create'">
+    <div v-if="pageName === 'createPage'">
       <div>
         <label for="reps-input">Reps</label>
         <input v-model="reps" id="reps-input" name="reps-input">
@@ -27,13 +27,14 @@
         <label for="break-input">Break</label>
         <input v-model="breakTime" id="break-input" name="break-input">
       </div>
-      <button @click="page = 'timer'">
+      <button @click="changePage('countdownPage')">
         Go
       </button>
     </div>
-    <div v-if="page === 'timer'">
+    <div v-if="pageName === 'countdownPage'">
+      <div>{{countdown}}</div>
       <button @click="startWorkout()">Start</button>
-      <button @click="page = 'create'">
+      <button @click="changePage('createPage')">
         Cancel
       </button>
     </div>
