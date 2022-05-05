@@ -27,13 +27,14 @@
         <label for="break-input">Break</label>
         <input v-model="breakTime" id="break-input" name="break-input">
       </div>
-      <button @click="changePage('countdownPage')">
-        Go
-      </button>
+      <button @click="changePage('countdownPage')">Go</button>
     </div>
     <div v-if="pageName === 'countdownPage'">
       <div>{{countdown}}</div>
       <button @click="startWorkout()">Start</button>
+      <button @click="pauseWorkout()">Pause</button>
+      <button @click="stopWorkout()">Stop</button>
+      <button @click="resetWorkout()">Reset</button>
       <button @click="changePage('createPage')">
         Cancel
       </button>

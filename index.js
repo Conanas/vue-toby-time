@@ -7,7 +7,11 @@ window.addEventListener('DOMContentLoaded', () => {
       restTime: 1,
       sets: 1,
       breakTime: 1,
-      countdown: 0
+      countdown: 0,
+      timer: null,
+    },
+    created() {
+      this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
     },
     methods: {
       changePage(pageName) {
@@ -16,16 +20,24 @@ window.addEventListener('DOMContentLoaded', () => {
           this.countdown = this.restTime;
         }
       },
+      timerCallback() {
+        this.countdown--;
+        if (!this.countdown) {
+          this.timer.stop();
+        }
+      },
       startWorkout() {
+        this.timer.start();
+      },
+      pauseWorkout() {
+        this.timer.stop();
+      },
+      stopWorkout() {
+        this.timer.stop();
+      },
+      resetWorkout() {
         this.countdown = this.restTime;
-        const timer = new moment.duration(1000).timer({ loop: true }, () => {
-          this.countdown--;
-          if (!this.countdown) {
-            timer.stop();
-          }
-        });
-        timer.start();
-      }
+      },
     },
     computed: {
 
