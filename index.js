@@ -10,8 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
       setCount: 0,
       breakTime: 5,
       countdown: 0,
-      timer: null,
-      timerMode: 'GO'
+      timer: null
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
@@ -27,12 +26,11 @@ window.addEventListener('DOMContentLoaded', () => {
         this.countdown--;
         if (!this.countdown) {
           this.timer.stop();
-          this.timerMode = 'GO';
           this.countdown = this.restTime;
+          this.repCount++;
         }
       },
       startTimer() {
-        this.timerMode = 'REST';
         this.timer.start();
       }
     },
@@ -48,6 +46,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (this.timerMode === 'BREAK') {
           return 'Break';
+        }
+
+        if (this.timerMode === 'COPMLETE') {
+          return 'NOICE!!';
+        }
+      },
+      timerMode() {
+        if (this.timer.isStarted()) {
+          return 'REST';
+        }
+        
+        if (this.timer.isStopped()) {
+          if (!this.repCount && !this.setCount) {
+            return 'GO';
+          }
+
+          if (this.repCount !== this.repsTotal && this.setCount !== this.setsTotal) {
+            return 'REST';
+          }
+
+          if (this.repCount === this.repsTotal && this.setCount !== this.setsTotal) {
+            return 'BREAK';
+          }
+
+          if (this.repCount === this.repsTotal && this.setCount === this.setsTotal) {
+            return 'COMPLETE';
+          }
         }
       }
     }
