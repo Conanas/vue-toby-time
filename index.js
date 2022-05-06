@@ -3,10 +3,12 @@ window.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       pageName: 'createPage',
-      reps: 1,
-      restTime: 1,
-      sets: 1,
-      breakTime: 1,
+      repsTotal: 3,
+      repCount: 0,
+      restTime: 3,
+      setsTotal: 3,
+      setCount: 0,
+      breakTime: 5,
       countdown: 0,
       timer: null,
       timerMode: 'GO'

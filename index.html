@@ -13,7 +13,7 @@
     <div v-if="pageName === 'createPage'">
       <div>
         <label for="reps-input">Reps</label>
-        <input v-model="reps" id="reps-input" name="reps-input">
+        <input v-model="repsTotal" id="reps-input" name="reps-input">
       </div>
       <div>
         <label for="rest-input">Rest</label>
@@ -21,7 +21,7 @@
       </div>
       <div>
         <label for="sets-input">Sets</label>
-        <input v-model="sets" id="sets-input" name="sets-input">
+        <input v-model="setsTotal" id="sets-input" name="sets-input">
       </div>
       <div>
         <label for="break-input">Break</label>
@@ -31,8 +31,10 @@
     </div>
     <div v-if="pageName === 'countdownPage'">
       <div>{{timerMessage}}</div>
+      <div>Reps {{repCount}} / {{repsTotal}}</div>
+      <div>Sets {{setCount}} / {{setsTotal}}</div>
       <div>{{countdown}}</div>
-      <button @click="startTimer()">Start</button>
+      <button @click="startTimer()">Rest</button>
       <button @click="changePage('createPage')">Cancel</button>
     </div>
   </div>
