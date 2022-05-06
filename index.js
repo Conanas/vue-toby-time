@@ -38,10 +38,12 @@ window.addEventListener('DOMContentLoaded', () => {
           this.timer.stop();
           this.countdown = this.restTime;
           this.repCount++;
+          console.log('end', this.timer.isStarted())
         }
       },
       startTimer() {
         this.timer.start();
+        console.log(this.timer.isStarted());
       }
     },
     computed: {
@@ -58,31 +60,29 @@ window.addEventListener('DOMContentLoaded', () => {
           return 'Break';
         }
 
-        if (this.timerMode === 'COPMLETE') {
+        if (this.timerMode === 'COMPLETE') {
           return 'NOICE!!';
         }
       },
       timerMode() {
-        if (this.timer.isStarted()) {
+        if (!this.timer.isStarted() && !this.timer.isStopped() && (this.repCount === 1) && (this.setCount === 1)) {
+          return 'GO';
+        }
+
+        if (this.timer.isStopped() && (this.repCount >= 1) && (this.setCount >= 1)) {
+          return 'GO';
+        }
+
+        if (!this.timer.isStopped() && (this.repCount !== this.repsTotal) && (this.setCount !== this.setsTotal)) {
           return 'REST';
         }
-        
-        if (this.timer.isStopped()) {
-          if (!this.repCount && !this.setCount) {
-            return 'GO';
-          }
 
-          if (this.repCount !== this.repsTotal && this.setCount !== this.setsTotal) {
-            return 'REST';
-          }
+        if (!this.timer.isStopped() && (this.repCount === this.repsTotal) && (this.setCount !== this.setsTotal)) {
+          return 'BREAK';
+        }
 
-          if (this.repCount === this.repsTotal && this.setCount !== this.setsTotal) {
-            return 'BREAK';
-          }
-
-          if (this.repCount === this.repsTotal && this.setCount === this.setsTotal) {
-            return 'COMPLETE';
-          }
+        if (!this.timer.isStarted() && (this.repCount === this.repsTotal) && (this.setCount === this.setsTotal)) {
+          return 'COMPLETE';
         }
       }
     }
