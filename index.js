@@ -4,10 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
     data: {
       pageName: 'createPage',
       repsTotal: 3,
-      repCount: 0,
+      repCount: 1,
       restTime: 3,
       setsTotal: 3,
-      setCount: 0,
+      setCount: 1,
       breakTime: 5,
       countdown: 0,
       timer: null
@@ -20,6 +20,16 @@ window.addEventListener('DOMContentLoaded', () => {
         this.pageName = pageName;
         if (pageName === 'countdownPage') {
           this.countdown = this.restTime;
+        }
+        if (pageName === 'createPage') {
+          this.repsTotal = 3;
+          this.restTime = 3;
+          this.repCount = 1;
+          this.setsTotal = 3;
+          this.setCount = 1;
+          this.breakTime = 5;
+          this.countdown = 0;
+          this.timer.stop();
         }
       },
       timerCallback() {
