@@ -3,8 +3,8 @@ window.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       pageName: 'createPage',
-      repTotal: 2,
-      repCount: 2,
+      repTotal: 3,
+      repCount: 1,
       restTime: 2,
       setTotal: 2,
       setCount: 1,
@@ -39,6 +39,10 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startTimer() {
+        if (this.timerMode === 'COMPLETE') {
+          return true;
+        }
+
         this.timerStarted = true;
         this.timer.start();
       }
@@ -86,12 +90,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startButtonMessage() {
-        if (this.repCount === this.repTotal) {
-          return 'Break';
+        if ((this.repCount === (this.repTotal + 1))) {
+          return 'Finish';
         }
 
-        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
-          return 'Finish';
+        if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+          return 'Break';
         }
 
         return 'Rest';
