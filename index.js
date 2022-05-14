@@ -49,6 +49,19 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     },
     computed: {
+      timerMode() {
+        if (!this.timerStarted) {
+          return 'GO';
+        } else if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+          return 'COMPLETE';
+        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+          return 'BREAK';
+        } else if ((this.repCount !== this.repTotal) && (this.setCount !== this.setTotal)) {
+          return 'REST';
+        } else {
+          return 'GO';
+        }
+      },
       timerMessage() {
         if (this.timerMode === 'GO') {
           return 'Go!';
@@ -64,19 +77,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (this.timerMode === 'COMPLETE') {
           return 'NOICE!!';
-        }
-      },
-      timerMode() {
-        if (!this.timerStarted) {
-          return 'GO';
-        } else if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
-          return 'COMPLETE';
-        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
-          return 'BREAK';
-        } else if ((this.repCount !== this.repTotal) && (this.setCount !== this.setTotal)) {
-          return 'REST';
-        } else {
-          return 'GO';
         }
       }
     }
