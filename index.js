@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     data: {
       pageName: 'createPage',
       repTotal: 2,
-      repCount: 1,
+      repCount: 2,
       restTime: 2,
       setTotal: 2,
       setCount: 1,
@@ -23,12 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
           this.countdown = this.restTime;
         }
         if (pageName === 'createPage') {
-          this.repTotal = 3;
-          this.restTime = 3;
           this.repCount = 1;
-          this.setTotal = 3;
           this.setCount = 1;
-          this.breakTime = 5;
           this.countdown = 0;
           this.timerStarted = false;
           this.timer.stop();
@@ -51,19 +47,26 @@ window.addEventListener('DOMContentLoaded', () => {
       timerMode() {
         if (!this.timerStarted) {
           return 'GO';
-        } else if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+        }
+
+        if (this.repCount === (this.repTotal + 1)) {
+          this.repCount = this.repTotal;
           return 'COMPLETE';
-        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+        }
+        
+        if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
           this.countdown = this.breakTime;
           this.repCount = 1;
           this.setCount++;
           return 'BREAK';
-        } else if (this.repCount !== this.repTotal) {
+        }
+        
+        if ((this.repCount !== this.repTotal) || ((this.repCount === this.repTotal) && (this.setCount === this.setTotal))) {
           this.countdown = this.restTime;
           return 'REST';
-        } else {
-          return 'GO';
         }
+        
+        return 'COMPLETE';
       },
       timerMessage() {
         if (this.timerMode === 'GO') {
@@ -81,6 +84,17 @@ window.addEventListener('DOMContentLoaded', () => {
         if (this.timerMode === 'COMPLETE') {
           return 'NOICE!!';
         }
+      },
+      startButtonMessage() {
+        if (this.repCount === this.repTotal) {
+          return 'Break';
+        }
+
+        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+          return 'Finish';
+        }
+
+        return 'Rest';
       }
     }
   });
