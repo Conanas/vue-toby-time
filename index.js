@@ -10,11 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
       setCount: 1,
       breakTime: 3,
       countdown: 0,
-      timer: null,
       timerStarted: false
-    },
-    created() {
-      this.timer = new moment.duration(1000).timer({ loop: true, start: false, wait: 0, executeAfterWait: true }, () => this.timerCallback());
     },
     methods: {
       changePage(pageName) {
@@ -27,24 +23,28 @@ window.addEventListener('DOMContentLoaded', () => {
           this.setCount = 1;
           this.countdown = 0;
           this.timerStarted = false;
-          this.timer.stop();
-        }
-      },
-      timerCallback() {
-        this.countdown--;
-        if (!this.countdown) {
-          this.timerStarted = false;
-          this.timer.stop();
-          this.repCount++;
         }
       },
       startTimer() {
-        if (this.timerMode === 'COMPLETE') {
-          return true;
-        }
-
         this.timerStarted = true;
-        this.timer.start();
+        const startTime = moment();
+        const endTime = moment().add(5, 'seconds');
+        let count = 1;
+        let ticking = true;
+        while (ticking) {
+          console.log('startTime', startTime);
+          const currentTime = moment().add(0, 'seconds');
+          console.log('currentTime', currentTime);
+          console.log('add', startTime.add(count, 'seconds'));
+          if (currentTime.isSame(startTime.add(count, 'seconds')) || currentTime.isAfter(startTime.add(count, 'seconds'))) {
+            console.log(count);
+            count++;
+          }
+          if (currentTime.isSame(endTime) || currentTime.isAfter(endTime)) {
+            ticking = false;
+          }
+        }
+        console.log('finish')
       }
     },
     computed: {
