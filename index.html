@@ -30,11 +30,11 @@
       <button @click="changePage('countdownPage')">Go</button>
     </div>
     <div v-if="pageName === 'countdownPage'">
-      <div>Reps {{repCount}} / {{repTotal}}</div>
-      <div>Sets {{setCount}} / {{setTotal}}</div>
-      <div>{{timerMessage}}</div>
-      <div>{{countdown}}</div>
-      <button @click="startTimer()">Rest</button>
+      <div>Reps {{ repCount }} / {{ repTotal }}</div>
+      <div>Sets {{ setCount }} / {{ setTotal }}</div>
+      <div>{{ timerMessage }}</div>
+      <div>{{ countdown }}</div>
+      <button @click="startTimer()">{{ startButtonMessage }}</button>
       <button @click="changePage('createPage')">Cancel</button>
     </div>
   </div>
