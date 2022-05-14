@@ -10,7 +10,8 @@ window.addEventListener('DOMContentLoaded', () => {
       setCount: 1,
       breakTime: 5,
       countdown: 0,
-      timer: null
+      timer: null,
+      timerStarted: false
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false, wait: 0, executeAfterWait: true }, () => this.timerCallback());
@@ -29,18 +30,21 @@ window.addEventListener('DOMContentLoaded', () => {
           this.setCount = 1;
           this.breakTime = 5;
           this.countdown = 0;
+          this.timerStarted = false;
           this.timer.stop();
         }
       },
       timerCallback() {
         this.countdown--;
         if (!this.countdown) {
+          this.timerStarted = false;
           this.timer.stop();
           this.countdown = this.restTime;
           this.repCount++;
         }
       },
       startTimer() {
+        this.timerStarted = true;
         this.timer.start();
       }
     },
@@ -63,15 +67,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       timerMode() {
-        console.log(this.timer)
-        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
-          return 'COMPLETE';
-        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal) && (!this.timer.isStopped() || this.timer.isStarted())) {
-          return 'BREAK';
-        } else if ((this.repCount !== this.repTotal) && (this.setCount !== this.setTotal) && (!this.timer.isStopped() || this.timer.isStarted())) {
-          return 'REST';
-        } else if (this.timer.isStopped() || !this.timer.isStarted()) {
+        if (!this.timerStarted) {
           return 'GO';
+        } else if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+          return 'COMPLETE';
+        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+          return 'BREAK';
+        } else if ((this.repCount !== this.repTotal) && (this.setCount !== this.setTotal)) {
+          return 'REST';
         } else {
           return 'GO';
         }
