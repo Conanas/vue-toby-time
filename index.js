@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       pageName: 'createPage',
-      repTotal: 3,
+      repTotal: 2,
       repCount: 1,
       restTime: 2,
       setTotal: 2,
@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
       timerMode: 'GO'
     },
     created() {
-      this.timer = new moment.duration(1000).timer({ loop: true, start: false, wait: 0, executeAfterWait: true }, () => this.timerCallback());
+      this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
     },
     methods: {
       changePage(pageName) {
