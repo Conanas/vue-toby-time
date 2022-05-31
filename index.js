@@ -80,11 +80,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startButtonMessage() {
-        if ((this.repCount === (this.repTotal + 1))) {
+        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
           return 'Finish';
         }
 
-        if (this.timerMode === 'BREAK') {
+        if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
           return 'Break';
         }
 
