@@ -40,7 +40,6 @@ window.addEventListener('DOMContentLoaded', () => {
             this.setCount++;
           } else if (this.timerMode === 'REST') {
             this.repCount++;
-            this.countdown = this.restTime;
           }
           this.timerMode = 'GO';
         }
@@ -52,6 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
           this.repCount = 1;
         } else {
           this.timerMode = 'REST';
+          this.countdown = this.restTime;
         }
         
         this.timerStarted = true;
