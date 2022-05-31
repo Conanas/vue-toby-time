@@ -45,7 +45,10 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startTimer() {
-        if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+          this.timerMode = 'COMPLETE';
+          return true;
+        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
           this.timerMode = 'BREAK';
           this.countdown = this.breakTime;
           this.repCount = 1;
