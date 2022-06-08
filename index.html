@@ -36,6 +36,8 @@
       <div>{{ countdown }}</div>
       <button @click="startTimer()">{{ startButtonMessage }}</button>
       <button @click="changePage('createPage')">Cancel</button>
+      <div>{{ tobyMessage }}</div>
+      <img class="d-block" :src="tobyImage" width="300px">
     </div>
   </div>
   <script src="https://momentjs.com/downloads/moment.js"></script>

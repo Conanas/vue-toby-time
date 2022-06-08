@@ -12,7 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
       countdown: 0,
       timer: null,
       timerStarted: false,
-      timerMode: 'GO'
+      timerMode: 'GO',
+      tobyImageCount: 17
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
@@ -89,6 +90,30 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         return 'Rest';
+      },
+      tobyImage() {
+        if (this.timerMode === 'GO') {
+          return '';
+        }
+
+        return `/images/toby_${Math.ceil(Math.random() * this.tobyImageCount)}.jpg`;
+      },
+      tobyMessage() {
+        if (this.timerMode === 'GO') {
+          return '';
+        }
+
+        if (this.timerMode === 'REST') {
+          return 'Keep going Mamma!';
+        }
+
+        if (this.timerMode === 'BREAK') {
+          return 'Nap time Mamma!';
+        }
+
+        if (this.timerMode === 'COMPLETE') {
+          return 'You da best Mamma!';
+        }
       }
     }
   });
