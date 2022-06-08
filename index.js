@@ -11,7 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
       breakTime: 3,
       countdown: 0,
       timer: null,
-      timerStarted: false,
       timerMode: 'GO',
       tobyImageCount: 17
     },
@@ -24,18 +23,18 @@ window.addEventListener('DOMContentLoaded', () => {
         if (pageName === 'countdownPage') {
           this.countdown = this.restTime;
         }
+
         if (pageName === 'createPage') {
           this.repCount = 1;
           this.setCount = 1;
           this.countdown = 0;
-          this.timerStarted = false;
+          this.timerMode = 'GO';
           this.timer.stop();
         }
       },
       timerCallback() {
         this.countdown--;
         if (!this.countdown) {
-          this.timerStarted = false;
           this.timer.stop();
           if (this.timerMode === 'BREAK') {
             this.setCount++;
@@ -57,8 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
           this.timerMode = 'REST';
           this.countdown = this.restTime;
         }
-        
-        this.timerStarted = true;
+
         this.timer.start();
       }
     },
