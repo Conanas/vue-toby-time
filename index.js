@@ -129,9 +129,9 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       disableGoButton() {
         if (
-          (this.repTotal >= 2 && !this.restTime) ||
-          (this.setTotal >= 2 && !this.breakTime) ||
-          (!this.repTotal || !this.setTotal)) {
+          (this.repTotal >= 2 && this.restTime <= 0) ||
+          (this.setTotal >= 2 && this.breakTime <= 0) ||
+          (this.repTotal <= 0 || this.setTotal <= 0)) {
           return true;
         }
         return false;
