@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     methods: {
       changePage(pageName) {
         this.pageName = pageName;
-        if (pageName === 'countdownPage') {
+        if (pageName === 'timerPage') {
           this.countdown = this.restTime;
         }
 
