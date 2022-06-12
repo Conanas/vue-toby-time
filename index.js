@@ -5,9 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
       pageName: 'createPage',
       repTotal: 1,
       repCount: 1,
-      restSeconds: 0,
+      restSeconds: 1,
       restMinutes: 0,
-      restTime: 2,
       setTotal: 1,
       setCount: 1,
       breakSeconds: 0,
@@ -19,8 +18,8 @@ window.addEventListener('DOMContentLoaded', () => {
       tobyImageCount: 17,
       repRange: 99,
       setRange: 00,
-      secondsRange: 60,
-      minutesRange: 60
+      secondsRange: 61,
+      minutesRange: 61
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());

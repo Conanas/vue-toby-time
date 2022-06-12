@@ -15,18 +15,18 @@
         <label for="reps-input">Reps</label>
         <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input" aria-label="Default select example">
           <option selected>Select Reps</option>
-          <option v-for="rep in repRange" value="rep">{{ rep }}</option>
+          <option v-for="rep in repRange" :value="rep">{{ rep }}</option>
         </select>
       </div>
       <div>
         <label for="rest-seconds-input">Rest</label>
         <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" aria-label="Default select example" :disabled="disableRestTimeInput">
           <option selected>Select Rest Time Seconds</option>
-          <option v-for="second in secondsRange" :value="second">{{ second }}</option>
+          <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
         </select>
         <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" aria-label="Default select example" :disabled="disableRestTimeInput">
           <option selected>Select Rest Time Minutes</option>
-          <option v-for="minute in minutesRange" :value="minute">{{ minute }}</option>
+          <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
         </select>
       </div>
       <div>
