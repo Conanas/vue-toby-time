@@ -10,14 +10,6 @@
 </head>
 <body>
   <div id="app">
-    <div class="container">
-      <header class="d-flex justify-content-center py-3">
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="#create" :class="['nav-link', { active: pageName === 'createPage' }]" :aria-current="[{ page: pageName === 'createPage' }]" @click="changePage('createPage')">Create</a></li>
-          <li class="nav-item"><a href="#timer" :class="['nav-link', { active: pageName === 'timerPage' }]" :aria-current="[{ page: pageName === 'timerPage' }]" @click="changePage('timerPage')">Timer</a></li>
-        </ul>
-      </header>
-    </div>
     <div v-if="pageName === 'createPage'">
       <div>
         <label for="reps-input">Reps</label>
@@ -42,8 +34,8 @@
       <div>Sets {{ setCount }} / {{ setTotal }}</div>
       <div>{{ timerMessage }}</div>
       <div>{{ countdown }}</div>
-      <button @click="startTimer()">{{ startButtonMessage }}</button>
-      <button @click="changePage('createPage')">Cancel</button>
+      <button v-if="this.timerMode !== 'COMPLETE'" @click="startTimer()">{{ startButtonMessage }}</button>
+      <button @click="changePage('createPage')">Back</button>
       <div>{{ tobyMessage }}</div>
       <img class="d-block" :src="tobyImage" width="300px">
     </div>
