@@ -5,14 +5,22 @@ window.addEventListener('DOMContentLoaded', () => {
       pageName: 'createPage',
       repTotal: 1,
       repCount: 1,
+      restSeconds: 0,
+      restMinutes: 0,
       restTime: 2,
       setTotal: 1,
       setCount: 1,
+      breakSeconds: 0,
+      breakMinutes: 0,
       breakTime: 3,
       countdown: 0,
       timer: null,
       timerMode: 'GO',
-      tobyImageCount: 17
+      tobyImageCount: 17,
+      repRange: 99,
+      setRange: 00,
+      secondsRange: 60,
+      minutesRange: 60
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
@@ -61,6 +69,12 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     },
     computed: {
+      restTime() {
+        if (parseInt(this.repTotal) <= 1) {
+          return 0;
+        }
+        return (this.restMinutes * 60) + parseInt(this.restSeconds);
+      },
       timerMessage() {
         if (this.timerMode === 'GO') {
           return 'Go!';
@@ -114,11 +128,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       disableRestTimeInput() {
-        if (parseInt(this.repTotal) <= 1) {
-          this.restTime = 0;
-          return true;
-        }
-        return false;
+        return parseInt(this.repTotal) <= 1;
       },
       disableSetTimeInput() {
         if (parseInt(this.setTotal) <= 1) {
