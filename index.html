@@ -15,7 +15,7 @@
         <label for="reps-input">Reps</label>
         <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input" aria-label="Default select example">
           <option selected>Select Reps</option>
-          <option v-for="rep in repRange" :value="rep">{{ rep }}</option>
+          <option v-for="rep in workoutRange" :value="rep - 1">{{ rep - 1 }}</option>
         </select>
       </div>
       <div>
@@ -31,11 +31,21 @@
       </div>
       <div>
         <label for="sets-input">Sets</label>
-        <input v-model="setTotal" id="sets-input" name="sets-input">
+        <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input" aria-label="Default select example">
+          <option selected>Select Sets</option>
+          <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
+        </select>
       </div>
       <div>
         <label for="break-input">Break</label>
-        <input v-model="breakTime" id="break-input" name="break-input":disabled="disableSetTimeInput">
+        <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" aria-label="Default select example" :disabled="disableBreakTimeInput">
+          <option selected>Select Break Time Seconds</option>
+          <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
+        </select>
+        <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" aria-label="Default select example" :disabled="disableBreakTimeInput">
+          <option selected>Select Break Time Minutes</option>
+          <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
+        </select>
       </div>
       <button @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
     </div>

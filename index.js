@@ -9,15 +9,13 @@ window.addEventListener('DOMContentLoaded', () => {
       restMinutes: 0,
       setTotal: 1,
       setCount: 1,
-      breakSeconds: 0,
+      breakSeconds: 1,
       breakMinutes: 0,
-      breakTime: 3,
       countdown: 0,
       timer: null,
       timerMode: 'GO',
       tobyImageCount: 17,
-      repRange: 99,
-      setRange: 00,
+      workoutRange: 100,
       secondsRange: 61,
       minutesRange: 61
     },
@@ -74,6 +72,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         return (this.restMinutes * 60) + parseInt(this.restSeconds);
       },
+      breakTime() {
+        if (parseInt(this.setTotal) <= 1) {
+          return 0;
+        }
+        return (this.breakMinutes * 60) + parseInt(this.breakSeconds);
+      },
       timerMessage() {
         if (this.timerMode === 'GO') {
           return 'Go!';
@@ -129,12 +133,8 @@ window.addEventListener('DOMContentLoaded', () => {
       disableRestTimeInput() {
         return parseInt(this.repTotal) <= 1;
       },
-      disableSetTimeInput() {
-        if (parseInt(this.setTotal) <= 1) {
-          this.breakTime = 0;
-          return true;
-        }
-        return false;
+      disableBreakTimeInput() {
+        return parseInt(this.setTotal) <= 1;
       },
       disableGoButton() {
         if (
