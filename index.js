@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
       changePage(pageName) {
         this.pageName = pageName;
         if (pageName === 'timerPage') {
-          this.countdown = this.restTime;
+          this.countdown = parseInt(this.restTime);
         }
 
         if (pageName === 'createPage') {
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       timerCallback() {
         this.countdown--;
-        if (!this.countdown) {
+        if (!parseInt(this.countdown)) {
           this.timer.stop();
           if (this.timerMode === 'BREAK') {
             this.setCount++;
@@ -45,16 +45,16 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startTimer() {
-        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+        if ((parseInt(this.repCount) === parseInt(this.repTotal)) && (parseInt(this.setCount) === parseInt(this.setTotal))) {
           this.timerMode = 'COMPLETE';
           return true;
-        } else if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+        } else if ((parseInt(this.repCount) === parseInt(this.repTotal)) && (parseInt(this.setCount) !== parseInt(this.setTotal))) {
           this.timerMode = 'BREAK';
-          this.countdown = this.breakTime;
+          this.countdown = parseInt(this.breakTime);
           this.repCount = 1;
         } else {
           this.timerMode = 'REST';
-          this.countdown = this.restTime;
+          this.countdown = parseInt(this.restTime);
         }
 
         this.timer.start();
@@ -79,11 +79,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       startButtonMessage() {
-        if ((this.repCount === this.repTotal) && (this.setCount === this.setTotal)) {
+        if ((parseInt(this.repCount) === parseInt(this.repTotal)) && (parseInt(this.setCount) === parseInt(this.setTotal))) {
           return 'Finish';
         }
 
-        if ((this.repCount === this.repTotal) && (this.setCount !== this.setTotal)) {
+        if ((parseInt(this.repCount) === parseInt(this.repTotal)) && (parseInt(this.setCount) !== parseInt(this.setTotal))) {
           return 'Break';
         }
 
@@ -114,14 +114,14 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       disableRestTimeInput() {
-        if (this.repTotal <= 1) {
+        if (parseInt(this.repTotal) <= 1) {
           this.restTime = 0;
           return true;
         }
         return false;
       },
       disableSetTimeInput() {
-        if (this.setTotal <= 1) {
+        if (parseInt(this.setTotal) <= 1) {
           this.breakTime = 0;
           return true;
         }
@@ -129,9 +129,9 @@ window.addEventListener('DOMContentLoaded', () => {
       },
       disableGoButton() {
         if (
-          (this.repTotal >= 2 && this.restTime <= 0) ||
-          (this.setTotal >= 2 && this.breakTime <= 0) ||
-          (this.repTotal <= 0 || this.setTotal <= 0)) {
+          (parseInt(this.repTotal) >= 2 && parseInt(this.restTime) <= 0) ||
+          (parseInt(this.setTotal) >= 2 && parseInt(this.breakTime) <= 0) ||
+          (parseInt(this.repTotal) <= 0 || parseInt(this.setTotal) <= 0)) {
           return true;
         }
         return false;
