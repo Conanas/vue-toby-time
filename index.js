@@ -130,7 +130,8 @@ window.addEventListener('DOMContentLoaded', () => {
       disableGoButton() {
         if (
           (this.repTotal >= 2 && !this.restTime) ||
-          (this.setTotal >= 2 && !this.breakTime)) {
+          (this.setTotal >= 2 && !this.breakTime) ||
+          (!this.repTotal || !this.setTotal)) {
           return true;
         }
         return false;
