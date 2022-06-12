@@ -25,7 +25,7 @@
       </div>
       <div>
         <label for="rest-input">Rest</label>
-        <input v-model="restTime" id="rest-input" name="rest-input">
+        <input v-model="restTime" id="rest-input" name="rest-input" :disabled="disableRestTimeInput">
       </div>
       <div>
         <label for="sets-input">Sets</label>
@@ -33,9 +33,9 @@
       </div>
       <div>
         <label for="break-input">Break</label>
-        <input v-model="breakTime" id="break-input" name="break-input">
+        <input v-model="breakTime" id="break-input" name="break-input":disabled="disableSetTimeInput">
       </div>
-      <button @click="changePage('timerPage')">Go</button>
+      <button @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
     </div>
     <div v-if="pageName === 'timerPage'">
       <div>Reps {{ repCount }} / {{ repTotal }}</div>

@@ -3,10 +3,10 @@ window.addEventListener('DOMContentLoaded', () => {
     el: '#app',
     data: {
       pageName: 'createPage',
-      repTotal: 2,
+      repTotal: 1,
       repCount: 1,
       restTime: 2,
-      setTotal: 2,
+      setTotal: 1,
       setCount: 1,
       breakTime: 3,
       countdown: 0,
@@ -112,6 +112,28 @@ window.addEventListener('DOMContentLoaded', () => {
         if (this.timerMode === 'COMPLETE') {
           return 'You da best Mamma!';
         }
+      },
+      disableRestTimeInput() {
+        if (this.repTotal <= 1) {
+          this.restTime = 0;
+          return true;
+        }
+        return false;
+      },
+      disableSetTimeInput() {
+        if (this.setTotal <= 1) {
+          this.breakTime = 0;
+          return true;
+        }
+        return false;
+      },
+      disableGoButton() {
+        if (
+          (this.repTotal >= 2 && !this.restTime) ||
+          (this.setTotal >= 2 && !this.breakTime)) {
+          return true;
+        }
+        return false;
       }
     }
   });
