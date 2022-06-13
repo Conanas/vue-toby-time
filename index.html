@@ -29,15 +29,15 @@
         <div class="col-10 px-0">
           <div class="row gx-0">
             <div class="col-6">
-              <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" :disabled="disableRestTimeInput">
-                <option selected>Select Rest Time Seconds</option>
-                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
-              </select>
-            </div>
-            <div class="col-6">
               <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" :disabled="disableRestTimeInput">
                 <option selected>Select Rest Time Minutes</option>
                 <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" :disabled="disableRestTimeInput">
+                <option selected>Select Rest Time Seconds</option>
+                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
               </select>
             </div>
           </div>
@@ -61,15 +61,15 @@
         <div class="col-10 px-0">
           <div class="row gx-0">
             <div class="col-6">
-              <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
-                <option selected>Select Break Time Seconds</option>
-                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
-              </select>
-            </div>
-            <div class="col-6">
               <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
                 <option selected>Select Break Time Minutes</option>
                 <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
+                <option selected>Select Break Time Seconds</option>
+                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
               </select>
             </div>
           </div>
