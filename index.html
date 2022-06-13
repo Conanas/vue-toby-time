@@ -6,20 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-  <title>Document</title>
+  <title>Toby Time</title>
 </head>
 <body>
   <div id="app" class="container">
     <div v-if="pageName === 'createPage'" class="row">
-      <div>
-        <label for="reps-input">Reps</label>
-        <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input">
-          <option selected>Select Reps</option>
-          <option v-for="rep in workoutRange" :value="rep - 1">{{ rep - 1 }}</option>
-        </select>
+      <div class="row pe-0">
+        <div class="col-2">
+          <label for="reps-input">Reps</label>
+        </div>
+        <div class="col-10 px-0">
+          <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input">
+            <option selected>Select Reps</option>
+            <option v-for="rep in workoutRange" :value="rep - 1">{{ rep - 1 }}</option>
+          </select>
+        </div>
       </div>
       <div class="row pe-0">
-        <label for="rest-seconds-input" class="col-2">Rest</label>
+        <div class="col-2">
+          <label for="rest-seconds-input">Rest</label>
+        </div>
         <div class="col-10 px-0">
           <div class="row gx-0">
             <div class="col-6">
@@ -37,15 +43,21 @@
           </div>
         </div>
       </div>
-      <div>
-        <label for="sets-input">Sets</label>
-        <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input">
-          <option selected>Select Sets</option>
-          <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
-        </select>
+      <div class="row pe-0">
+        <div class="col-2">
+          <label for="sets-input">Sets</label>
+        </div>
+        <div class="col-10 px-0">
+          <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input">
+            <option selected>Select Sets</option>
+            <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
+          </select>
+        </div>
       </div>
       <div class="row pe-0">
-        <label for="break-input" class="col-2">Break</label>
+        <div class="col-2">
+          <label for="break-input">Break</label>
+        </div>
         <div class="col-10 px-0">
           <div class="row gx-0">
             <div class="col-6">
