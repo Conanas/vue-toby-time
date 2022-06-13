@@ -53,7 +53,7 @@
       <div>Reps {{ repCount }} / {{ repTotal }}</div>
       <div>Sets {{ setCount }} / {{ setTotal }}</div>
       <div>{{ timerMessage }}</div>
-      <div>{{ countdown }}</div>
+      <div>{{ countdownString }}</div>
       <button v-if="this.timerMode !== 'COMPLETE'" @click="startTimer()">{{ startButtonMessage }}</button>
       <button @click="changePage('createPage')">Back</button>
       <div>{{ tobyMessage }}</div>

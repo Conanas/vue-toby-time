@@ -78,6 +78,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         return (this.breakMinutes * 60) + parseInt(this.breakSeconds);
       },
+      countdownString() {
+        const minutes = parseInt(this.countdown / 60);
+        const minutesString = `${minutes < 10 ? '0' : ''}${minutes}`;
+        const seconds = parseInt(this.countdown % 60);
+        const secondsString = `${seconds < 10 ? '0' : ''}${seconds}`;
+        return `${minutesString}:${secondsString}`;
+      },
       timerMessage() {
         if (this.timerMode === 'GO') {
           return 'Go!';
