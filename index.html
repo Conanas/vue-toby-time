@@ -13,49 +13,59 @@
     <div v-if="pageName === 'createPage'" class="row">
       <div>
         <label for="reps-input">Reps</label>
-        <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input" aria-label="Default select example">
+        <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input">
           <option selected>Select Reps</option>
           <option v-for="rep in workoutRange" :value="rep - 1">{{ rep - 1 }}</option>
         </select>
       </div>
-      <div>
-        <label for="rest-seconds-input">Rest</label>
-        <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" aria-label="Default select example" :disabled="disableRestTimeInput">
-          <option selected>Select Rest Time Seconds</option>
-          <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
-        </select>
-        <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" aria-label="Default select example" :disabled="disableRestTimeInput">
-          <option selected>Select Rest Time Minutes</option>
-          <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
-        </select>
+      <div class="row pe-0">
+        <label for="rest-seconds-input" class="col-2">Rest</label>
+        <div class="col-10 px-0">
+          <div class="row gx-0">
+            <div class="col-6">
+              <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" :disabled="disableRestTimeInput">
+                <option selected>Select Rest Time Seconds</option>
+                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" :disabled="disableRestTimeInput">
+                <option selected>Select Rest Time Minutes</option>
+                <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         <label for="sets-input">Sets</label>
-        <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input" aria-label="Default select example">
+        <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input">
           <option selected>Select Sets</option>
           <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
         </select>
       </div>
       <div>
         <label for="break-input">Break</label>
-        <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" aria-label="Default select example" :disabled="disableBreakTimeInput">
+        <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
           <option selected>Select Break Time Seconds</option>
           <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
         </select>
-        <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" aria-label="Default select example" :disabled="disableBreakTimeInput">
+        <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
           <option selected>Select Break Time Minutes</option>
           <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
         </select>
       </div>
-      <button @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
+      <button type="button" class="btn btn-success" @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
     </div>
     <div v-if="pageName === 'timerPage'" class="row">
       <div>Reps {{ repCount }} / {{ repTotal }}</div>
       <div>Sets {{ setCount }} / {{ setTotal }}</div>
       <div>{{ timerMessage }}</div>
       <div>{{ countdownString }}</div>
-      <button v-if="this.timerMode !== 'COMPLETE'" @click="startTimer()">{{ startButtonMessage }}</button>
-      <button @click="changePage('createPage')">Back</button>
+      <div class="btn-group" role="group">
+        <button v-if="this.timerMode !== 'COMPLETE'" type="button" class="btn btn-primary" @click="startTimer()">{{ startButtonMessage }}</button>
+        <button  type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
+      </div>
       <div>{{ tobyMessage }}</div>
       <img class="d-block" :src="tobyImage" width="300px">
     </div>
