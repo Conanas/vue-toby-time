@@ -44,16 +44,24 @@
           <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
         </select>
       </div>
-      <div>
-        <label for="break-input">Break</label>
-        <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
-          <option selected>Select Break Time Seconds</option>
-          <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
-        </select>
-        <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
-          <option selected>Select Break Time Minutes</option>
-          <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
-        </select>
+      <div class="row pe-0">
+        <label for="break-input" class="col-2">Break</label>
+        <div class="col-10 px-0">
+          <div class="row gx-0">
+            <div class="col-6">
+              <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
+                <option selected>Select Break Time Seconds</option>
+                <option v-for="second in secondsRange" :value="second - 1">{{ second - 1 }}</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
+                <option selected>Select Break Time Minutes</option>
+                <option v-for="minute in minutesRange" :value="minute - 1">{{ minute - 1 }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
       <button type="button" class="btn btn-success" @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
     </div>
