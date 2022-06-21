@@ -10,79 +10,71 @@
   <title>Toby Time</title>
 </head>
 <body>
-  <div id="app" class="container mt-5">
+  <div id="app" class="container">
     <div v-if="pageName === 'createPage'">
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-2">
           <label for="reps-input">Reps</label>
         </div>
         <div class="col-10">
           <select class="form-select" v-model="repTotal" id="reps-input" name="reps-input">
             <option selected disabled>Select Reps</option>
-            <option v-for="rep in workoutRange" :value="rep - 1">{{ rep - 1 }}</option>
+            <option v-for="rep in workoutRange" class="text-center" :value="rep - 1">{{ rep - 1 }}</option>
           </select>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-2">
           <label>Rest</label>
         </div>
-        <div class="col-10">
-          <div class="row gx-0">
-            <div class="col-5">
-              <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" :disabled="disableRestTimeInput">
-                <option selected disabled>Select Rest Time Minutes</option>
-                <option v-for="minute in minutesRange" :value="minute - 1">{{ timeSelectFormat(minute - 1) }}</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-row justify-content-center align-items-center">
-              <strong>:</strong>
-            </div>
-            <div class="col-5">
-              <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" :disabled="disableRestTimeInput">
-                <option selected disabled>Select Rest Time Seconds</option>
-                <option v-for="second in secondsRange" :value="second - 1">{{ timeSelectFormat(second - 1) }}</option>
-              </select>
-            </div>
-          </div>
+        <div class="col-10 d-flex justify-content-between">
+          <select class="form-select" v-model="restMinutes" id="rest-minutes-input" name="rest-minutes-input" :disabled="disableRestTimeInput">
+            <option selected disabled>Select Rest Time Minutes</option>
+            <option v-for="minute in minutesRange" class="text-center" :value="minute - 1">
+              {{ timeSelectFormat(minute - 1) }}
+            </option>
+          </select>
+          <strong class="text-center px-2">:</strong>
+          <select class="form-select" v-model="restSeconds" id="rest-seconds-input" name="rest-seconds-input" :disabled="disableRestTimeInput">
+            <option selected disabled>Select Rest Time Seconds</option>
+            <option v-for="second in secondsRange" class="text-center" :value="second - 1">
+              {{ timeSelectFormat(second - 1) }}
+            </option>
+          </select>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-2">
           <label for="sets-input">Sets</label>
         </div>
         <div class="col-10">
           <select class="form-select" v-model="setTotal" id="sets-input" name="sets-input">
             <option selected disabled>Select Sets</option>
-            <option v-for="set in workoutRange" :value="set - 1">{{ set - 1 }}</option>
+            <option v-for="set in workoutRange" class="text-center" :value="set - 1">{{ set - 1 }}</option>
           </select>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-2">
           <label>Break</label>
         </div>
-        <div class="col-10">
-          <div class="row gx-0">
-            <div class="col-5">
-              <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
-                <option selected disabled>Select Break Time Minutes</option>
-                <option v-for="minute in minutesRange" :value="minute - 1">{{ timeSelectFormat(minute - 1) }}</option>
-              </select>
-            </div>
-            <div class="col-2 d-flex flex-row justify-content-center align-items-center">
-              <strong>:</strong>
-            </div>
-            <div class="col-5">
-              <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
-                <option selected disabled>Select Break Time Seconds</option>
-                <option v-for="second in secondsRange" :value="second - 1">{{ timeSelectFormat(second - 1) }}</option>
-              </select>
-            </div>
-          </div>
+        <div class="col-10 d-flex justify-content-between">
+          <select class="form-select" v-model="breakMinutes" id="break-minutes-input" name="break-minutes-input" :disabled="disableBreakTimeInput">
+            <option selected disabled>Select Break Time Minutes</option>
+            <option v-for="minute in minutesRange" class="text-center" :value="minute - 1">
+              {{ timeSelectFormat(minute - 1) }}
+            </option>
+          </select>
+          <strong class="text-center px-2">:</strong>
+          <select class="form-select" v-model="breakSeconds" id="break-seconds-input" name="break-seconds-input" :disabled="disableBreakTimeInput">
+            <option selected disabled>Select Break Time Seconds</option>
+            <option v-for="second in secondsRange" class="text-center" :value="second - 1">
+              {{ timeSelectFormat(second - 1) }}
+            </option>
+          </select>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row mb-2">
         <div class="col-12">
           <button type="button" class="btn btn-success w-100" @click="changePage('timerPage')" :disabled="disableGoButton">Go</button>
         </div>
