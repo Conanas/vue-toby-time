@@ -82,10 +82,8 @@ window.addEventListener('DOMContentLoaded', () => {
         return (this.breakMinutes * 60) + parseInt(this.breakSeconds);
       },
       countdownString() {
-        const minutes = parseInt(this.countdown / 60);
-        const minutesString = `${minutes < 10 ? '0' : ''}${minutes}`;
-        const seconds = parseInt(this.countdown % 60);
-        const secondsString = `${seconds < 10 ? '0' : ''}${seconds}`;
+        const minutesString = this.timeSelectFormat(parseInt(this.countdown / 60));
+        const secondsString = this.timeSelectFormat(parseInt(this.countdown % 60));
         return `${minutesString}:${secondsString}`;
       },
       timerMessage() {
