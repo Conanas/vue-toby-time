@@ -80,14 +80,34 @@
         </div>
       </div>
     </div>
-    <div v-if="pageName === 'timerPage'" class="row">
-      <div>Reps {{ repCount }} / {{ repTotal }}</div>
-      <div>Sets {{ setCount }} / {{ setTotal }}</div>
-      <div>{{ timerMessage }}</div>
-      <div>{{ countdownString }}</div>
-      <div class="btn-group" role="group">
-        <button v-if="this.timerMode !== 'COMPLETE'" type="button" class="btn btn-primary" @click="startTimer()">{{ startButtonMessage }}</button>
-        <button  type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
+    <div v-if="pageName === 'timerPage'">
+      <div class="row mb-2">
+        <div class="col-12 text-center">
+          Reps {{ repCount }} / {{ repTotal }}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12 text-center">
+          Sets {{ setCount }} / {{ setTotal }}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12 display-1 text-center">
+          {{ timerMessage }}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12 display-1 text-center">
+          {{ countdownString }}
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="btn-group w-100" role="group">
+            <button v-if="this.timerMode !== 'COMPLETE'" type="button" class="btn btn-primary" @click="startTimer()">{{ startButtonMessage }}</button>
+            <button  type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
+          </div>
+        </div>
       </div>
       <div>{{ tobyMessage }}</div>
       <img class="d-block" :src="tobyImage" width="300px">
