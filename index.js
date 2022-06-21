@@ -63,6 +63,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         this.timer.start();
+      },
+      timeSelectFormat(time) {
+        return `${time < 10 ? '0' : ''}${time}`
       }
     },
     computed: {
