@@ -77,6 +77,16 @@ window.addEventListener('DOMContentLoaded', () => {
           this.timer.stop();
         }
       },
+      handleRepChange(int) {
+        if (parseInt(int) === 1) {
+
+        }
+      },
+      handleSetChange(int) {
+        if (parseInt(int) === 1) {
+
+        }
+      },
       timeSelectFormat(time) {
         return `${time < 10 ? '0' : ''}${time}`
       }
