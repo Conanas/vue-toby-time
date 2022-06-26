@@ -39,8 +39,11 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       },
       timerCallback() {
-        this.countdown--;
-        if (!parseInt(this.countdown)) {
+        if (parseInt(this.countdown) > 0) {
+          this.countdown--;
+        }
+
+        if (parseInt(this.countdown) <= 0) {
           this.timer.stop();
           if (this.timerMode === 'BREAK') {
             this.setCount++;
