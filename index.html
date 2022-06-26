@@ -104,8 +104,9 @@
       <div class="row mb-2">
         <div class="col-12">
           <div class="btn-group w-100" role="group">
-            <button v-if="this.timerMode !== 'COMPLETE'" type="button" class="btn btn-primary" @click="startTimer()">{{ startButtonMessage }}</button>
-            <button  type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
+            <button v-if="(this.timerMode !== 'COMPLETE') && (this.timerMode === 'GO')" type="button" class="btn btn-primary" @click="startTimer()">{{ startButtonMessage }}</button>
+            <button v-if="(this.timerMode !== 'COMPLETE') && (this.timerMode !== 'GO')" type="button" class="btn btn-primary" @click="pauseTimer()">{{ pauseButtonMessage }}</button>
+            <button type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
           </div>
         </div>
       </div>

@@ -17,7 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
       tobyImageCount: 17,
       workoutRange: 100,
       secondsRange: 61,
-      minutesRange: 61
+      minutesRange: 61,
+      isTimerPaused: false
     },
     created() {
       this.timer = new moment.duration(1000).timer({ loop: true, start: false }, () => this.timerCallback());
@@ -64,6 +65,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         this.timer.start();
       },
+      pauseTimer() {
+        if (this.isTimerPaused) {
+          this.isTimerPaused= false;
+          this.timer.start();
+        } else {
+          this.isTimerPaused = true;
+          this.timer.stop();
+        }
+      },
       timeSelectFormat(time) {
         return `${time < 10 ? '0' : ''}${time}`
       }
@@ -87,6 +97,10 @@ window.addEventListener('DOMContentLoaded', () => {
         return `${minutesString}:${secondsString}`;
       },
       timerMessage() {
+        if (this.isTimerPaused) {
+          return 'Pause';
+        }
+
         if (this.timerMode === 'GO') {
           return 'Go!';
         }
@@ -113,6 +127,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         return 'Rest';
+      },
+      pauseButtonMessage() {
+        if (this.isTimerPaused) {
+          return 'Continue';
+        }
+
+        return 'Pause'
       },
       tobyImage() {
         if (this.timerMode === 'GO') {
