@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
       countdown: 0,
       timer: null,
       timerMode: 'GO',
-      tobyImageCount: 17,
+      tobyImageCount: 19,
       workoutRange: 100,
       secondsRange: 61,
       minutesRange: 61,
