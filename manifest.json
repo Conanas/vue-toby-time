@@ -1,7 +1,8 @@
 {
   "name": "Toby Time",
   "short_name": "Toby",
-  "start_url": "/index.html",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "description": "A description for your application",
   "lang": " The default language of your application",
@@ -32,7 +33,7 @@
     },
     {
       "src": "https://www.pwabuilder.com/assets/screenshots/screen2.png",
-      "sizes": "2880/1800",
+      "sizes": "2880x1800",
       "type": "image/png",
       "description": "PWABuilder Report Card"
     },
