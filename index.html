@@ -111,17 +111,21 @@
             <button type="button" class="btn btn-secondary" @click="changePage('createPage')">Back</button>
           </div>
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
           <div class="btn-group w-100" role="group">
             <button type="button" class="btn btn-primary" @click="handleSetChange(-1)" :disabled="!isTimerPaused || this.timerMode !== 'GO' || setCount === 1">Prev Set</button>
             <button type="button" class="btn btn-primary" @click="handleRepChange(-1)" :disabled="!isTimerPaused || this.timerMode !== 'GO' || repCount === 1">Prev Rep</button>
             <button type="button" class="btn btn-primary" @click="handleRepChange(1)" :disabled="!isTimerPaused || this.timerMode !== 'GO' || repCount === repTotal">Next Rep</button>
             <button type="button" class="btn btn-primary" @click="handleSetChange(1)" :disabled="!isTimerPaused || this.timerMode !== 'GO' || setCount === setTotal">Next Set</button>
           </div>
+        </div> -->
+      </div>
+      <div class="row">
+        <div class="col d-flex flex-column justify-content-center align-items-center">
+          <div>{{ tobyMessage }}</div>
+          <img class="d-block" :src="tobyImage" width="300px">
         </div>
       </div>
-      <div>{{ tobyMessage }}</div>
-      <img class="d-block" :src="tobyImage" width="300px">
     </div>
   </div>
   <script src="https://momentjs.com/downloads/moment.js"></script>
